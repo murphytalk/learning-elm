@@ -11,7 +11,9 @@ view model =
         [ h1 [] [ text "Photo Groove" ]
           -- List.map returns a list , has to put it in () otherwise it will be interpreted as 3 addional paramters to div
         , div [ id "thumbnails" ] (List.map 
-                                    (\photo -> viewThumbnail model.selectedUrl photo)  model.photos
+                                    -- partially applying : returns a function that takes one parameter which is one element from model.photos
+                                    (viewThumbnail model.selectedUrl) 
+                                    model.photos
                                   ) 
         , img
             [
